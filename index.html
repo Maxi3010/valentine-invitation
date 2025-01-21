@@ -53,7 +53,7 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .buttons {
@@ -135,7 +135,6 @@
 <body>
     <div class="container">
         <h1>Will You Be My Valentine? 💜</h1>
-        <!-- The image is now placed below the heading -->
         <img class="valentine-image" src="https://github.com/Maxi3010/valentine-invitation/blob/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg?raw=true" alt="Valentine Image">
         <div class="lyrics-container">
             <p>"Baby, can we slow down? I just wanna get to know you..."</p>
@@ -201,23 +200,6 @@
             document.getElementById('responseText').innerHTML = "Baby, you're all I want! 💜";
             document.getElementById('yesBtn').style.display = 'none';
             document.getElementById('noBtn').style.display = 'none';
-
-            // Trigger notification
-            if (Notification.permission === "granted") {
-                new Notification("She said Yes! 💜", {
-                    body: "You are the one! 💜",
-                    icon: "https://cdn-icons-png.flaticon.com/512/64/64346.png"
-                });
-            } else if (Notification.permission !== "denied") {
-                Notification.requestPermission().then(permission => {
-                    if (permission === "granted") {
-                        new Notification("She said Yes! 💜", {
-                            body: "You are the one! 💜",
-                            icon: "https://cdn-icons-png.flaticon.com/512/64/64346.png"
-                        });
-                    }
-                });
-            }
         }
 
         function moveButton() {
