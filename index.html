@@ -1,203 +1,326 @@
-<style>
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(45deg, #000000, #1a0033);
-        font-family: 'Arial', sans-serif;
-        overflow: hidden;
-        text-align: center;
-        padding: 20px;
-        color: #fff;
-        background-image: url('https://raw.githubusercontent.com/Maxi3010/valentine-invitation/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg');
-        background-size: cover; /* Ensures the image covers the entire viewport */
-        background-position: center center; /* Centers the image */
-        background-attachment: fixed; /* Keeps the image in place while scrolling */
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? | SLOW DOWN</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #000000, #1a0033);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            background-image: url('https://raw.githubusercontent.com/Maxi3010/valentine-invitation/main/src/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
 
-    .container {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 15px;
-        backdrop-filter: blur(5px);
-    }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
 
-    h1 {
-        color: #9d4edd;
-        text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
-        font-size: 2.5em;
-        margin-bottom: 30px;
-        animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-        from {
+        h1 {
+            color: #9d4edd;
             text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: glow 2s infinite alternate;
         }
-        to {
-            text-shadow: 0 0 20px rgba(157, 78, 221, 0.8);
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(157, 78, 221, 0.8);
+            }
         }
-    }
 
-    .buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 30px;
-    }
-
-    .btn {
-        padding: 15px 30px;
-        font-size: 1.2em;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: #9d4edd;
-        color: white;
-        box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.2),
-            transparent
-        );
-        transition: 0.5s;
-    }
-
-    .btn:hover::before {
-        left: 100%;
-    }
-
-    .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 25px rgba(157, 78, 221, 0.5);
-    }
-
-    .heart {
-        position: fixed;
-        font-size: 1.5em;
-        animation: float 6s ease-in-out infinite;
-        opacity: 0;
-        filter: hue-rotate(45deg);
-    }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
         }
-        100% {
-            transform: translateY(-100vh) rotate(360deg);
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #9d4edd;
+            color: white;
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.5);
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 1.5em;
+            animation: float 6s ease-in-out infinite;
             opacity: 0;
+            filter: hue-rotate(45deg);
         }
-    }
 
-    .lyrics-container {
-        margin: 20px 0;
-        font-style: italic;
-        color: #c77dff;
-        text-shadow: 0 0 5px rgba(199, 125, 255, 0.5);
-        animation: fadePulse 4s infinite;
-    }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-    @keyframes fadePulse {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-    }
+        .lyrics-container {
+            margin: 20px 0;
+            font-style: italic;
+            color: #c77dff;
+            text-shadow: 0 0 5px rgba(199, 125, 255, 0.5);
+            animation: fadePulse 4s infinite;
+        }
 
-    #responseText {
-        font-size: 1.5em;
-        color: #c77dff;
-        text-shadow: 0 0 5px rgba(199, 125, 255, 0.3);
-        margin-top: 20px;
-        min-height: 60px;
-    }
+        @keyframes fadePulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
 
-    .music-player {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(26, 26, 26, 0.9);
-        padding: 15px 30px;
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
-    }
+        #responseText {
+            font-size: 1.5em;
+            color: #c77dff;
+            text-shadow: 0 0 5px rgba(199, 125, 255, 0.3);
+            margin-top: 20px;
+            min-height: 60px;
+        }
 
-    .music-player button {
-        background: none;
-        border: none;
-        color: #9d4edd;
-        cursor: pointer;
-        font-size: 1.5em;
-        transition: all 0.3s ease;
-    }
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 26, 26, 0.9);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+        }
 
-    .music-player button:hover {
-        transform: scale(1.1);
-        color: #c77dff;
-    }
+        .music-player button {
+            background: none;
+            border: none;
+            color: #9d4edd;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
 
-    .song-info {
-        color: #9d4edd;
-        text-align: left;
-    }
+        .music-player button:hover {
+            transform: scale(1.1);
+            color: #c77dff;
+        }
 
-    .song-title {
-        font-weight: bold;
-        margin-bottom: 3px;
-    }
+        .song-info {
+            color: #9d4edd;
+            text-align: left;
+        }
 
-    .song-artist {
-        font-size: 0.8em;
-        opacity: 0.8;
-    }
+        .song-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
 
-    .volume-control {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
+        .song-artist {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
 
-    #volumeSlider {
-        width: 80px;
-        accent-color: #9d4edd;
-    }
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-    #lyricsDisplay {
-        margin: 20px 0;
-        font-size: 1.2em;
-        color: #c77dff;
-    }
+        #volumeSlider {
+            width: 80px;
+            accent-color: #9d4edd;
+        }
 
-    .background-particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-    }
-</style>
+        #lyricsDisplay {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #c77dff;
+        }
+
+        .background-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine? 💜</h1>
+
+        <div class="lyrics-container">
+            <p>"Baby, can we slow down? I just wanna get to know you..."</p>
+        </div>
+
+        <div id="responseText"></div>
+
+        <div class="buttons">
+            <button class="btn" id="yesBtn">Yes! 💜</button>
+            <button class="btn" id="noBtn">No 💔</button>
+        </div>
+    </div>
+
+    <div class="music-player">
+        <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+        <div class="song-info">
+            <div class="song-title">SLOW DOWN</div>
+            <div class="song-artist">Chase Atlantic</div>
+        </div>
+        <div class="volume-control">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+        </div>
+    </div>
+
+    <script>
+        const responses = [
+            "Baby, can we slow down? 💜",
+            "I just wanna get to know you... 🌙",
+            "Don't run away... ✨",
+            "Stay a while longer... 💫",
+            "Let's take our time... 🌌",
+            "We could be perfect... 💜",
+            "Just give us a chance... ⭐",
+            "Let's make this moment last... 🌙"
+        ];
+
+        const lyrics = [
+            "Baby, can we slow down?",
+            "I just wanna get to know you",
+            "Tell me all your secrets",
+            "I just wanna show you"
+        ];
+
+        let currentLyricIndex = 0;
+        let isPlaying = false;
+        let clickCount = 0;
+
+        function updateLyrics() {
+            const container = document.querySelector('.lyrics-container');
+            container.innerHTML = `<p>"${lyrics[currentLyricIndex]}"</p>`;
+            currentLyricIndex = (currentLyricIndex + 1) % lyrics.length;
+        }
+
+        setInterval(updateLyrics, 4000);
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💜';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        function celebrate() {
+            setInterval(createHeart, 300);
+            document.getElementById('responseText').innerHTML = "Baby, you're all I want! 💜";
+            document.getElementById('yesBtn').style.display = 'none';
+            document.getElementById('noBtn').style.display = 'none';
+
+            if (!isPlaying) {
+                document.getElementById('playPauseBtn').click();
+            }
+        }
+
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+
+            clickCount++;
+            if (clickCount <= responses.length) {
+                document.getElementById('responseText').innerHTML = responses[clickCount - 1];
+            }
+        }
+
+        document.getElementById('playPauseBtn').addEventListener('click', () => {
+            const btn = document.getElementById('playPauseBtn');
+            isPlaying = !isPlaying;
+            btn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+        });
+
+        document.getElementById('yesBtn').addEventListener('click', celebrate);
+        document.getElementById('noBtn').addEventListener('mouseover', moveButton);
+        document.getElementById('noBtn').addEventListener('click', moveButton);
+
+        setInterval(createHeart, 2000);
+    </script>
+</body>
+</html>
