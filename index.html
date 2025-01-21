@@ -19,10 +19,6 @@
             text-align: center;
             padding: 20px;
             color: #fff;
-            background-image: url('https://github.com/Maxi3010/valentine-invitation/blob/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg?raw=true');
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
         }
 
         .container {
@@ -207,6 +203,17 @@
             pointer-events: none;
             z-index: 0;
         }
+
+        .image-container {
+            margin-top: 30px;
+        }
+
+        .valentine-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -222,6 +229,10 @@
         <div class="buttons">
             <button class="btn" id="yesBtn">Yes! 💜</button>
             <button class="btn" id="noBtn">No 💔</button>
+        </div>
+
+        <div class="image-container">
+            <img src="https://github.com/Maxi3010/valentine-invitation/blob/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg?raw=true" alt="Valentine Image" class="valentine-image">
         </div>
     </div>
 
