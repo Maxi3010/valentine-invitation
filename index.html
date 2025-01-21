@@ -17,19 +17,15 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             color: #fff;
-            background-image: url('https://raw.githubusercontent.com/Maxi3010/valentine-invitation/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg?raw=true');
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
         }
 
         .container {
             position: relative;
             z-index: 1;
-            max-width: 800px;
-            padding: 20px;
+            max-width: 600px;
+            padding: 15px;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
             backdrop-filter: blur(5px);
@@ -38,8 +34,8 @@
         h1 {
             color: #9d4edd;
             text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
-            font-size: 2.5em;
-            margin-bottom: 30px;
+            font-size: 2em;
+            margin-bottom: 15px;
             animation: glow 2s infinite alternate;
         }
 
@@ -52,16 +48,26 @@
             }
         }
 
+        .valentine-image {
+            max-width: 30%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+            margin-top: 10px;
+        }
+
         .buttons {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 15px;
             justify-content: center;
-            margin-top: 30px;
+            align-items: center;
+            margin-top: 20px;
         }
 
         .btn {
-            padding: 15px 30px;
-            font-size: 1.2em;
+            padding: 10px 20px;
+            font-size: 1em;
             border: none;
             border-radius: 25px;
             cursor: pointer;
@@ -98,27 +104,8 @@
             box-shadow: 0 0 25px rgba(157, 78, 221, 0.5);
         }
 
-        .heart {
-            position: fixed;
-            font-size: 1.5em;
-            animation: float 6s ease-in-out infinite;
-            opacity: 0;
-            filter: hue-rotate(45deg);
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
         .lyrics-container {
-            margin: 20px 0;
+            margin: 10px 0;
             font-style: italic;
             color: #c77dff;
             text-shadow: 0 0 5px rgba(199, 125, 255, 0.5);
@@ -131,110 +118,37 @@
         }
 
         #responseText {
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: #c77dff;
             text-shadow: 0 0 5px rgba(199, 125, 255, 0.3);
-            margin-top: 20px;
-            min-height: 60px;
+            margin-top: 10px;
+            min-height: 40px;
         }
 
         .music-player {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(26, 26, 26, 0.9);
-            padding: 15px 30px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
-        }
-
-        .music-player button {
-            background: none;
-            border: none;
-            color: #9d4edd;
-            cursor: pointer;
-            font-size: 1.5em;
-            transition: all 0.3s ease;
-        }
-
-        .music-player button:hover {
-            transform: scale(1.1);
-            color: #c77dff;
-        }
-
-        .song-info {
-            color: #9d4edd;
-            text-align: left;
-        }
-
-        .song-title {
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
-
-        .song-artist {
-            font-size: 0.8em;
-            opacity: 0.8;
-        }
-
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        #volumeSlider {
-            width: 80px;
-            accent-color: #9d4edd;
-        }
-
-        #lyricsDisplay {
-            margin: 20px 0;
-            font-size: 1.2em;
-            color: #c77dff;
-        }
-
-        .background-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
+            margin-top: 20px;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            max-width: 600px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Will You Be My Valentine? 💜</h1>
-
+        <img class="valentine-image" src="https://github.com/Maxi3010/valentine-invitation/blob/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg?raw=true" alt="Valentine Image">
         <div class="lyrics-container">
             <p>"Baby, can we slow down? I just wanna get to know you..."</p>
         </div>
-
         <div id="responseText"></div>
-
         <div class="buttons">
             <button class="btn" id="yesBtn">Yes! 💜</button>
             <button class="btn" id="noBtn">No 💔</button>
         </div>
     </div>
 
+    <!-- Spotify Embed -->
     <div class="music-player">
-        <button id="playPauseBtn"><i class="fas fa-play"></i></button>
-        <div class="song-info">
-            <div class="song-title">SLOW DOWN</div>
-            <div class="song-artist">Chase Atlantic</div>
-        </div>
-        <div class="volume-control">
-            <i class="fas fa-volume-up"></i>
-            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
-        </div>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5H4mXWKcicuLKDn4Jy0sK7?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
 
     <script>
@@ -287,12 +201,22 @@
             document.getElementById('yesBtn').style.display = 'none';
             document.getElementById('noBtn').style.display = 'none';
 
-            if (!isPlaying) {
-                document.getElementById('playPauseBtn').click();
+            // Trigger notification
+            if (Notification.permission === "granted") {
+                new Notification("She said Yes! 💜", {
+                    body: "You are the one! 💜",
+                    icon: "https://cdn-icons-png.flaticon.com/512/64/64346.png"
+                });
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        new Notification("She said Yes! 💜", {
+                            body: "You are the one! 💜",
+                            icon: "https://cdn-icons-png.flaticon.com/512/64/64346.png"
+                        });
+                    }
+                });
             }
-
-            // Send a "Yes" response to the webhook URL
-            sendYesResponse();
         }
 
         function moveButton() {
@@ -313,24 +237,6 @@
             }
         }
 
-        function sendYesResponse() {
-            // Send a POST request to the Zapier webhook
-            fetch('https://hooks.zapier.com/hooks/catch/21398094/2kaccx1/', {
-                method: 'POST',
-                body: JSON.stringify({ message: 'She said Yes! 💜' }),
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(response => response.json())
-            .then(data => console.log('Success:', data))
-            .catch(error => console.error('Error:', error));
-        }
-
-        document.getElementById('playPauseBtn').addEventListener('click', () => {
-            const btn = document.getElementById('playPauseBtn');
-            isPlaying = !isPlaying;
-            btn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
-        });
-
         document.getElementById('yesBtn').addEventListener('click', celebrate);
         document.getElementById('noBtn').addEventListener('mouseover', moveButton);
         document.getElementById('noBtn').addEventListener('click', moveButton);
@@ -338,4 +244,3 @@
         setInterval(createHeart, 2000);
     </script>
 </body>
-</html>
