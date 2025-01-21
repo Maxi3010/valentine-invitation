@@ -17,15 +17,19 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             color: #fff;
+            background-image: url('https://raw.githubusercontent.com/Maxi3010/valentine-invitation/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg?raw=true');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
         }
 
         .container {
             position: relative;
             z-index: 1;
-            max-width: 600px;
-            padding: 15px;
+            max-width: 800px;
+            padding: 20px;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
             backdrop-filter: blur(5px);
@@ -34,8 +38,8 @@
         h1 {
             color: #9d4edd;
             text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
-            font-size: 2em;
-            margin-bottom: 15px;
+            font-size: 2.5em;
+            margin-bottom: 30px;
             animation: glow 2s infinite alternate;
         }
 
@@ -48,26 +52,16 @@
             }
         }
 
-        .valentine-image {
-            max-width: 30%; /* Reduced image size further */
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
-            margin-top: 10px;
-        }
-
         .buttons {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
-            align-items: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .btn {
-            padding: 10px 20px;
-            font-size: 1em;
+            padding: 15px 30px;
+            font-size: 1.2em;
             border: none;
             border-radius: 25px;
             cursor: pointer;
@@ -124,7 +118,7 @@
         }
 
         .lyrics-container {
-            margin: 10px 0;
+            margin: 20px 0;
             font-style: italic;
             color: #c77dff;
             text-shadow: 0 0 5px rgba(199, 125, 255, 0.5);
@@ -137,24 +131,24 @@
         }
 
         #responseText {
-            font-size: 1.2em;
+            font-size: 1.5em;
             color: #c77dff;
             text-shadow: 0 0 5px rgba(199, 125, 255, 0.3);
-            margin-top: 10px;
-            min-height: 40px;
+            margin-top: 20px;
+            min-height: 60px;
         }
 
         .music-player {
             position: fixed;
-            bottom: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(26, 26, 26, 0.9);
-            padding: 10px 20px;
+            padding: 15px 30px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
         }
 
@@ -163,7 +157,7 @@
             border: none;
             color: #9d4edd;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.5em;
             transition: all 0.3s ease;
         }
 
@@ -194,13 +188,13 @@
         }
 
         #volumeSlider {
-            width: 60px;
+            width: 80px;
             accent-color: #9d4edd;
         }
 
         #lyricsDisplay {
-            margin: 10px 0;
-            font-size: 1em;
+            margin: 20px 0;
+            font-size: 1.2em;
             color: #c77dff;
         }
 
@@ -218,11 +212,13 @@
 <body>
     <div class="container">
         <h1>Will You Be My Valentine? 💜</h1>
-        <img class="valentine-image" src="https://github.com/Maxi3010/valentine-invitation/blob/main/WhatsApp%20Bild%202025-01-21%20um%2015.08.42_a1669ea7.jpg?raw=true" alt="Valentine Image">
+
         <div class="lyrics-container">
             <p>"Baby, can we slow down? I just wanna get to know you..."</p>
         </div>
+
         <div id="responseText"></div>
+
         <div class="buttons">
             <button class="btn" id="yesBtn">Yes! 💜</button>
             <button class="btn" id="noBtn">No 💔</button>
@@ -294,6 +290,9 @@
             if (!isPlaying) {
                 document.getElementById('playPauseBtn').click();
             }
+
+            // Send a "Yes" response to the webhook URL
+            sendYesResponse();
         }
 
         function moveButton() {
@@ -312,6 +311,18 @@
             if (clickCount <= responses.length) {
                 document.getElementById('responseText').innerHTML = responses[clickCount - 1];
             }
+        }
+
+        function sendYesResponse() {
+            // Send a POST request to the Zapier webhook
+            fetch('https://hooks.zapier.com/hooks/catch/21398094/2kaccx1/', {
+                method: 'POST',
+                body: JSON.stringify({ message: 'She said Yes! 💜' }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => console.log('Success:', data))
+            .catch(error => console.error('Error:', error));
         }
 
         document.getElementById('playPauseBtn').addEventListener('click', () => {
