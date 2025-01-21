@@ -49,7 +49,7 @@
         }
 
         .valentine-image {
-            max-width: 30%;
+            max-width: 20%; /* Adjusted to make the image 10% smaller */
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
@@ -125,10 +125,19 @@
             min-height: 40px;
         }
 
-        .music-player {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 600px;
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #9d4edd;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+            font-size: 1.1em;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -146,10 +155,8 @@
         </div>
     </div>
 
-    <!-- Spotify Embed -->
-    <div class="music-player">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5H4mXWKcicuLKDn4Jy0sK7?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    </div>
+    <!-- Notification Div -->
+    <div id="notification" class="notification"></div>
 
     <script>
         const responses = [
@@ -195,11 +202,22 @@
             }, 6000);
         }
 
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerHTML = message;
+            notification.style.opacity = 1;
+
+            setTimeout(() => {
+                notification.style.opacity = 0;
+            }, 3000); // Notification disappears after 3 seconds
+        }
+
         function celebrate() {
             setInterval(createHeart, 300);
             document.getElementById('responseText').innerHTML = "Baby, you're all I want! 💜";
             document.getElementById('yesBtn').style.display = 'none';
             document.getElementById('noBtn').style.display = 'none';
+            showNotification("Yay! You said Yes! 💜");
         }
 
         function moveButton() {
@@ -218,6 +236,9 @@
             if (clickCount <= responses.length) {
                 document.getElementById('responseText').innerHTML = responses[clickCount - 1];
             }
+
+            // Show a notification each time the "No" button is clicked
+            showNotification("You clicked No... 💔");
         }
 
         document.getElementById('yesBtn').addEventListener('click', celebrate);
