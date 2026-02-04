@@ -56,7 +56,69 @@
         Princess.</p>
       </div>
     </section>
+  </main><!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine</title>
+  <meta name="description" content="A special Valentine's message">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <!-- Screen 1: Initial -->
+    <section id="screen-1" class="screen active" aria-label="Welcome screen">
+      <p class="intro">🖤 Für dich.</p>
+      <button id="openBtn" class="primary-btn" aria-label="Open message">Open</button>
+    </section>
+
+    <!-- Screen 2: Message -->
+    <section id="screen-2" class="screen" aria-label="Main message">
+      <div id="initialText" class="text-block">
+        <p>Ich will, dass du verstehst,<br>
+        dass du mir gehörst —<br>
+        nicht laut, sondern unausweichlich.</p>
+
+        <p>Ich will deine Nähe.<br>
+        Deine Haut.<br>
+        Jeden Atemzug, den wir teilen.</p>
+
+        <p>Willst du mein Valentinstag sein?</p>
+      </div>
+
+      <div class="button-group">
+        <button id="yesBtn" class="primary-btn" aria-label="Accept">Yes</button>
+        <button id="noBtn" class="primary-btn secondary" aria-label="Decline">No</button>
+      </div>
+
+      <!-- Final text -->
+      <div id="finalText" class="text-block hidden" aria-live="polite">
+        <p>Good. Now you are mine.<br>
+        Think about us two.</p>
+
+        <p>I am telling you to take off your bra.<br>
+        Two seconds later, white lace joined green silk on the floor.</p>
+
+        <p>Your nipples are already hard—so hard they could cut glass.<br>
+        You reach down to shimmy out of your underwear, but a low growl halts your movements.</p>
+
+        <p>I did not tell you to do that.<br>
+        Keep your underwear, gloves, and heels on.</p>
+
+        <p>And crawl to me.</p>
+
+        <p class="highlight">→ Good girl.</p>
+
+        <p class="signature">See you on Valentine's Day,<br>
+        Princess.</p>
+      </div>
+    </section>
   </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
   <script src="script.js"></script>
 </body>
