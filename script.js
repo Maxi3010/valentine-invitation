@@ -2,6 +2,7 @@
 const elements = {
   openBtn: document.getElementById('openBtn'),
   yesBtn: document.getElementById('yesBtn'),
+  noBtn: document.getElementById('noBtn'),
   screen1: document.getElementById('screen-1'),
   screen2: document.getElementById('screen-2'),
   initialText: document.getElementById('initialText'),
@@ -36,10 +37,12 @@ const revealFinalText = () => {
   // Hide initial content with fade out
   elements.initialText.classList.add('fade-out');
   elements.yesBtn.classList.add('fade-out');
+  elements.noBtn.classList.add('fade-out');
 
   setTimeout(() => {
     elements.initialText.style.display = 'none';
     elements.yesBtn.style.display = 'none';
+    elements.noBtn.style.display = 'none';
 
     // Switch to final mode
     elements.container.classList.remove('mode-message');
@@ -69,6 +72,11 @@ const init = () => {
   // Event listeners
   elements.openBtn.addEventListener('click', openMessage);
   elements.yesBtn.addEventListener('click', revealFinalText);
+  
+  // No button intentionally does nothing
+  elements.noBtn.addEventListener('click', () => {
+    // Nothing happens - there is no "no" option
+  });
 
   // Keyboard accessibility
   elements.openBtn.addEventListener('keydown', (e) => {
