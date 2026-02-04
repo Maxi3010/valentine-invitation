@@ -1,0 +1,241 @@
+/* ===== CSS Variables ===== */
+:root {
+  --bg: #000;
+  --fg: #f5f5f5;
+  --line: rgba(255, 255, 255, 0.55);
+  --glow: rgba(255, 255, 255, 0.22);
+  --transition-fast: 0.25s;
+  --transition-medium: 0.4s;
+  --transition-slow: 0.8s;
+}
+
+/* ===== Reset & Base Styles ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* ===== Layout Container ===== */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
+  transition: all var(--transition-medium) ease;
+}
+
+/* Reading mode - after "Open" button */
+.container.mode-message {
+  align-items: flex-start;
+  padding-top: 3.5rem;
+  padding-bottom: 6rem;
+}
+
+/* Final scene mode - after "Yes" button */
+.container.mode-final {
+  align-items: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* ===== Screen Sections ===== */
+.screen {
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--transition-slow) ease, 
+              transform var(--transition-slow) ease;
+  pointer-events: none;
+}
+
+.screen.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ===== Typography ===== */
+.intro {
+  font-size: clamp(2.1rem, 4vw, 2.6rem);
+  margin: 0 0 3rem;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 18px var(--glow);
+  font-weight: normal;
+}
+
+.text-block {
+  margin: 0 0 3rem;
+}
+
+.text-block p {
+  margin: 0 0 1.4rem;
+  font-size: 1.02rem;
+  letter-spacing: 0.2px;
+  line-height: 1.85;
+}
+
+.text-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Final text specific styling */
+#finalText {
+  text-align: center;
+}
+
+.highlight {
+  font-style: italic;
+  margin-top: 1.8rem !important;
+}
+
+.signature {
+  margin-top: 2.5rem !important;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Buttons ===== */
+.primary-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: #fff;
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform var(--transition-fast) ease, 
+              box-shadow var(--transition-fast) ease, 
+              border-color var(--transition-fast) ease;
+  outline: none;
+}
+
+.primary-btn:hover,
+.primary-btn:focus-visible {
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 14px var(--glow);
+  transform: translateY(-1px);
+}
+
+.primary-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== Animations ===== */
+.fade-out {
+  animation: fadeOut var(--transition-medium) ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.hidden {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity var(--transition-slow) ease, 
+              max-height 1s ease;
+}
+
+.hidden.show {
+  opacity: 1;
+  max-height: 4000px;
+  overflow: visible;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 3rem 1.25rem;
+  }
+
+  .container.mode-message {
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .intro {
+    margin-bottom: 2.5rem;
+  }
+
+  .text-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .text-block p {
+    font-size: 0.98rem;
+  }
+
+  .primary-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .text-block p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .primary-btn {
+    padding: 0.75rem 1.75rem;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --line: rgba(255, 255, 255, 0.9);
+    --glow: rgba(255, 255, 255, 0.4);
+  }
+
+  .primary-btn {
+    border-width: 2px;
+  }
+}
